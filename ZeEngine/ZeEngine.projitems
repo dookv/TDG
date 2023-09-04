@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>6efba8a9-a407-4029-bdd0-651d22a87386</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>ZeEngine</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <MonoGameContentReference Include="$(MSBuildThisFileDirectory)Content\Content.mgcb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Basic2d.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Basic2d\Animated2d.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Basic2d\Animated2d\FrameAnimation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Basic2d\Animated2d\Draggable2d.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Basic2d\Button2d.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataTypes\Forms\FormOption.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataTypes\Forms\FormPart.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataTypes\Forms\FormParts\ArrowSelector.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataTypes\Forms\FormParts\CheckBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataTypes\Grids\GridItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataTypes\Grids\GridLocation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataTypes\Menu2d.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataTypes\Misc\DragAndDropPacket.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataTypes\SceneItem\SceneItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataTypes\SquareGrid.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Globals.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Input\KeyBindList.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Input\KeyBinds\KeyBind.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Input\Keyboard\McKey.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Input\McKeyboard.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Input\McMouseControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)McTimer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)OptionsMenu.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Output\LevelDrawManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Output\LevelDrawManager\DrawSlot.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Output\LevelDrawManager\DrawSlot\DrawSlotUpdatePackage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Output\Message.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Output\Messages\DismissibleMessage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Output\QuantityDisplayBar.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Output\SoundControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Output\SoundControl\SoundItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Output\TextZone.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Output\TileBkg2d.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Save.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)Content\Content.mgcb" />
+  </ItemGroup>
+</Project>

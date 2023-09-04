@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--Data tags start with lower case and tags that have data in them start with upper case (just a preference, not neccesary), name the tags like your classes-->
+<Root>
+  <Level id="1">
+    <name>Level 1 name</name>
+    <file>Level1</file><!--You can use this to load in a level via filename, now we are doing it via number(levelid)-->
+    <Pos>
+      <x>400</x>
+      <y>250</y>
+    </Pos>
+  </Level>
+  <Level id="2">
+    <name>Level 2 name</name>
+    <file>Level2</file>
+    <Pos>
+      <x>600</x>
+      <y>400</y>
+    </Pos>
+  </Level>
+  
+</Root>

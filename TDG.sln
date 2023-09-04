@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TDG", "TDG\TDG.csproj", "{9D7EC1EA-181D-4380-B8D6-847A1D8D9063}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ZeEngine", "ZeEngine\ZeEngine.shproj", "{A0CDBD0E-3A41-42B7-9425-A838BC2C7383}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9D7EC1EA-181D-4380-B8D6-847A1D8D9063}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D7EC1EA-181D-4380-B8D6-847A1D8D9063}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D7EC1EA-181D-4380-B8D6-847A1D8D9063}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D7EC1EA-181D-4380-B8D6-847A1D8D9063}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D9C4B3DF-1573-4879-9BE9-841FACB4AE5A}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		ZeEngine\ZeEngine.projitems*{9d7ec1ea-181d-4380-b8d6-847a1d8d9063}*SharedItemsImports = 5
+		ZeEngine\ZeEngine.projitems*{a0cdbd0e-3a41-42b7-9425-a838bc2c7383}*SharedItemsImports = 13
+	EndGlobalSection
+EndGlobal

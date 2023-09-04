@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--Data tags start with lower case and tags that have data in them start with upper case (just a preference, not neccesary), name the tags like your classes-->
+<Root>
+  <User>
+    <Hero>
+      <Pos>
+        <x>800</x>
+        <y>450</y>
+      </Pos>
+    </Hero>
+    <Building>
+      <type>Tower</type>
+      <Pos>
+        <x>800</x>
+        <y>700</y>
+      </Pos>
+    </Building>
+  </User>
+  
+  <!--AIPlayer-->
+  
+  <AIPlayer>
+    <SpawnPoint>
+      <type>Portal</type>
+      <Pos>
+        <x>40</x>
+        <y>40</y>
+        <mob rate="50">Imp</mob>
+        <mob rate="20">Spider</mob>
+        <mob rate="20">AncientImp</mob>
+      </Pos>
+      <timerAdd>0</timerAdd>
+    </SpawnPoint>
+    <SpawnPoint>
+      <type>Portal</type>
+      <Pos>
+        <x>1560</x>
+        <y>40</y>
+      </Pos>
+      <mob rate="50">Imp</mob>
+      <mob rate="20">Spider</mob>
+      <mob rate="20">AncientImp</mob>
+      <timerAdd>1000</timerAdd>
+    </SpawnPoint>
+  </AIPlayer>
+  
+  <!--GridItems-->
+
+  <GridItems>
+    <GridItem>
+      <type>Hill</type>
+      <Loc>
+        <x>9</x>
+        <y>9</y>
+      </Loc>
+    </GridItem>
+    <GridItem>
+      <type>Hill</type>
+      <Loc>
+        <x>10</x>
+        <y>8</y>
+      </Loc>
+    </GridItem>
+    <GridItem>
+      <type>Hill</type>
+      <Loc>
+        <x>10</x>
+        <y>7</y>
+      </Loc>
+    </GridItem>
+    <GridItem>
+      <type>Hill</type>
+      <Loc>
+        <x>8</x>
+        <y>10</y>
+      </Loc>
+    </GridItem>
+    <GridItem>
+      <type>Hill</type>
+      <Loc>
+        <x>7</x>
+        <y>10</y>
+      </Loc>
+    </GridItem>
+  </GridItems>
+  
+  <!--Scene items-->
+
+
+  <Scene>
+    <SceneItem>
+      <type>OakTree</type>
+      <Pos>
+        <x>-60</x>
+        <y>200</y>
+      </Pos>
+      <scale>1</scale>
+    </SceneItem>
+    <SceneItem>
+      <type>OakTree</type>
+      <Pos>
+        <x>-60</x>
+        <y>240</y>
+      </Pos>
+      <scale>1</scale>
+    </SceneItem>
+    <SceneItem>
+      <type>OakTree</type>
+      <Pos>
+        <x>-60</x>
+        <y>160</y>
+      </Pos>
+      <scale>,7</scale>
+    </SceneItem>
+  </Scene>
+  
+</Root>
