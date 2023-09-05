@@ -212,6 +212,7 @@ namespace TDG
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Black);
+
             //you can just close this cpritebacth and start another one with another/different SpriteSOrtMode.
             //Usually you have a spritebatch for the UI, drawing things that are not using a shader, and something that is using a shader & And one that runs of a renderObject that can do some Post-Processing
             Globals.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp);//standard SpriteSOrtMode is deffered (Give me all your textures and i am going to run thge shader at the end of the frame)
