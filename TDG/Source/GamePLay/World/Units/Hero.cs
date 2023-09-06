@@ -114,7 +114,7 @@ namespace TDG
                 pos = new Vector2(pos.X, pos.Y + speed);
                 checkScroll = true;
             }
-            if (Globals.keyboard.GetSinglePress("Space"))
+            if (Globals.keyboard.GetSinglePress("Space") && !isJumping)
             {
                 zsp = -jumpSpeed;
             }
