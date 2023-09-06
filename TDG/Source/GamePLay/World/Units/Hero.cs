@@ -23,12 +23,41 @@ namespace TDG
         /* public Skill currentSkill;
          public List<Skill> skills = new List<Skill>();*/
         public SkillBar skillBar;
-        public Hero(string PATH, Vector2 POS, Vector2 DIMS, Vector2 FRAMES, int OWNERID) 
+        public int zFloor = 0;
+        public float zPos = 0;
+        public float zSpeed = 2;
+        public float zGrav = 0;
+        bool zJump = false;
+
+
+        public Vector2 characterVelocity;
+        public float jumpForce = -5f;  // Negative value for upward force
+        public float maxJumpHeight = 200f;
+        public bool isJumping = false;
+        public float jumpStartY;
+
+        public float jumpSpeed;
+        public float gravSpeed;
+        public float hsp;
+        public float vsp;
+        public float zsp;
+        public float z;
+        public float floorZ;
+
+        public Hero(string PATH, Vector2 POS, Vector2 DIMS, Vector2 FRAMES, int OWNERID)
             : base(PATH, POS, DIMS, FRAMES, OWNERID)
         {
+            z = 0;
+            floorZ = 0;
+            hsp = 0;
+            vsp = 0;
+            zsp = 0;
+            jumpSpeed = 14;
+            gravSpeed = 1;
+            characterVelocity = Vector2.Zero;
             name = "Bones";
             speed = 4.0f;
-            health = 5;
+            health = 500;
             healthMax = health;
             frameAnimations = true;
             currentAnimation = 0;
@@ -40,9 +69,9 @@ namespace TDG
 
             for (int i = 0; i < skills.Count; i++)
             {
-                if (i<skillBar.slots.Count)
+                if (i < skillBar.slots.Count)
                 {
-                    skillBar.slots[i].skillButton = new SkillButton("2d\\UI\\HealtBar2", new Vector2(0, 0), new Vector2(40, 40), new Vector2(1, 1), SetSkill,skills[i]);
+                    skillBar.slots[i].skillButton = new SkillButton("2d\\UI\\HealtBar2", new Vector2(0, 0), new Vector2(40, 40), new Vector2(1, 1), SetSkill, skills[i]);
                 }
                 else
                 {
@@ -53,7 +82,7 @@ namespace TDG
 
             for (int i = 0; i < 24; i++)
             {
-                inventorySlots.Add(new InventorySlot(new Vector2(0, 0), new Vector2(48, 48))); 
+                inventorySlots.Add(new InventorySlot(new Vector2(0, 0), new Vector2(48, 48)));
             }
 
         }
@@ -65,7 +94,8 @@ namespace TDG
             if (Globals.keyboard.GetPress(GameGlobals.keyBinds.GetKeyByName("Move Left")))
             {
                 pos = new Vector2(pos.X - speed, pos.Y);
-               
+
+
                 checkScroll = true;
             }
             if (Globals.keyboard.GetPress(GameGlobals.keyBinds.GetKeyByName("Move Right")))
@@ -81,22 +111,155 @@ namespace TDG
             if (Globals.keyboard.GetPress(GameGlobals.keyBinds.GetKeyByName("Move Down")))
             {
                 pos = new Vector2(pos.X, pos.Y + speed);
-                checkScroll = true; 
+                checkScroll = true;
             }
-
-
-/*            if (Globals.keyboard.GetSinglePress("D1"))//D1 is the number 1
+            if (Globals.keyboard.GetSinglePress("Space"))
             {
-                currentSkill = skills[0];
-                currentSkill.Active = true;//we can only acces the property here (Active)
+                zsp = -jumpSpeed;
             }
-
-            if (Globals.keyboard.GetSinglePress("D2"))//D1 is the number 1
+            if (zsp < 0)
             {
-                currentSkill = skills[1];
-                currentSkill.Active = true;//we can only acces the property here (Active)
+                zsp += gravSpeed;
+                pos = new Vector2(pos.X, pos.Y + z);
+                if (zsp >= 0)
+                {
+                    isJumping = true;
+                    ResetZAxis();
+                }
+            }
+            if (isJumping == true)
+            {
+                zsp += gravSpeed;
+                pos = new Vector2(pos.X, pos.Y + z);
+                if (zsp == 14)
+                {
+                    isJumping = false;
+                    ResetZAxis();
+                }
+            }
+            z = zsp;
+
+/*
+            if (z + zsp > floorZ)
+            {
+                zsp = 0;
+                z = floorZ;
             }*/
-            
+
+            #region
+            /*            if (Globals.keyboard.GetSinglePress("Space") && !isJumping)
+                        {
+                            // Record the character's starting Y position for the jump.
+                            jumpStartY = pos.Y;
+
+                            // Apply an upward velocity to simulate the jump on the Z-axis.
+                            characterVelocity.Y = jumpForce;
+
+                            // Set the jumping flag to true and switch to the jump animation.
+                            isJumping = true;
+
+                        }
+
+                        // Check if the character has reached the desired jump height.
+                        if (isJumping && pos.Y <= jumpStartY - maxJumpHeight)
+                        {
+                            // Limit the character's upward movement to the desired jump height.
+                            characterVelocity.Y = 0f;
+                        }
+
+                        // Check if the character has landed and reset the jump state.
+                        if (isJumping && pos.Y >= jumpStartY)
+                        {
+                            isJumping = false;
+
+                        }*/
+
+            // Update character position
+            pos += characterVelocity;
+
+            #endregion
+            #region firsthjump
+            /* if (Globals.keyboard.GetSinglePress("Space"))
+             {
+                 if (zPos <= zFloor)
+                 {
+                     zJump = true;
+
+                 }
+             }
+
+             if (zJump == true)
+             {
+                 zPos += zSpeed;
+                 pos = new Vector2(pos.X, pos.Y + zPos);
+             }
+
+             if (zPos <= zFloor)
+             {
+                 zPos -= zGrav;
+                 zGrav += 0.2f;
+             }
+
+             if (zPos <= zFloor + 1)
+             {
+                 zPos = zFloor;
+                 zGrav = 0;
+                 zJump = false;
+             }*/
+            #endregion
+            #region
+            /*if (zJump == true)
+            {
+                zPos += zSpeed;
+                pos = new Vector2(pos.X, pos.Y - zPos);
+                if (zPos >= zFloor)
+                {
+
+
+                    zPos -= zGrav;
+                    zGrav += 0.2f;
+                    pos = new Vector2(pos.X, pos.Y + zPos);
+                    if (zPos >= 10)
+                    {
+                        *//*                        float i = 1;
+                                                zPos += 0.15f * 1;*//*
+                        pos = new Vector2(pos.X, pos.Y + 20);
+                    }
+
+                    //zJump = false;
+                }
+
+            }
+            *//*
+
+                        if (zPos <= zFloor)
+                        {
+                            zPos -= zGrav;
+                            zGrav += 0.2f;
+                            //pos = new Vector2(pos.X, pos.Y + zPos);
+                        }*//*
+
+            if (zPos <= zFloor + 1)
+            {
+                zPos = zFloor;
+                zGrav = 0;
+                zJump = false;
+            }*/
+            #endregion
+
+
+            /*            if (Globals.keyboard.GetSinglePress("D1"))//D1 is the number 1
+                        {
+                            currentSkill = skills[0];
+                            currentSkill.Active = true;//we can only acces the property here (Active)
+                        }
+
+                        if (Globals.keyboard.GetSinglePress("D2"))//D1 is the number 1
+                        {
+                            currentSkill = skills[1];
+                            currentSkill.Active = true;//we can only acces the property here (Active)
+                        }*/
+
 
             rot = Globals.RotateTowards(pos, new Vector2(Globals.mouse.newMouse.X, Globals.mouse.newMouse.Y) - OFFSET);//we put the hero rotation in update because it needs to be constantly updated
             /* rot = Math.Atan2(Globals.mouse.newMouse.X, Globals.mouse.newMousePos.Y);*/
@@ -123,7 +286,7 @@ namespace TDG
                 }
             }
 
-            
+
             if (Globals.mouse.RightClick())
             {
                 if (currentSkill != null)
@@ -137,8 +300,8 @@ namespace TDG
             GameGlobals.CheckScroll(pos);//check screen scrolling
             if (checkScroll)
             {
-                
-               /* GameGlobals.CheckScroll(pos);//check if the screen needs to scroll on every movement press*/
+
+                /* GameGlobals.CheckScroll(pos);//check if the screen needs to scroll on every movement press*/
                 SetAnimationByName("Walk");
             }
             else
@@ -149,6 +312,12 @@ namespace TDG
 
             skillBar.Update(Vector2.Zero);
             base.Update(OFFSET, ENEMY, GRID, LEVELDRAWMANAGER);
+        }
+
+        public virtual void ResetZAxis()
+        {
+            zsp = 0;
+            z = 0;
         }
 
         public virtual void SetSkill(object INFO)

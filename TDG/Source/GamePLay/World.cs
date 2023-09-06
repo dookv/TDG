@@ -167,7 +167,7 @@ namespace TDG
                 changeGameState(0);
             }
 
-            if (Globals.keyboard.GetSinglePress("Space"))//implement bool lost//TODO now the spawned towers are also counting as buildings, so if the main tower gets destroyed while there are still summoned towers about, the ai of the spiderlings will freeze because they dont have a target
+            if (Globals.keyboard.GetSinglePress("U"))//implement bool lost//TODO now the spawned towers are also counting as buildings, so if the main tower gets destroyed while there are still summoned towers about, the ai of the spiderlings will freeze because they dont have a target
             {
                 GameGlobals.paused = !GameGlobals.paused;//If you wnat to just flip a bool,(true -> false or false -> true) you can just put an exclemation point in front of it.
                                                          //So basically we are saying GameGlobals.paused = true; (true because the default value for this GameGlobal is false)
