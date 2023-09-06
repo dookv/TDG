@@ -36,6 +36,7 @@ namespace TDG
         public bool isJumping = false;
         public float jumpStartY;
 
+        //the vars for the working z axis jump - hsp & vsp
         public float jumpSpeed;
         public float gravSpeed;
         public float hsp;
