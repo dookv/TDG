@@ -60,10 +60,12 @@ namespace TDG
 
             string tempStr3 = OFFSET.ToString();
             string tempStr2 = HERO.pos.ToString();
+            string tempStr5 = "z axis (Height)" + HERO.z.ToString();
             string tempStr = "Killed: " + GameGlobals.score.ToString();
             Vector2 strDims = font.MeasureString(tempStr);
 
             Globals.spriteBatch.DrawString(font, tempStr, new Vector2(40, 80), Color.White);//shader(effect) overrides this color.white Globals.screenWidth / 2 - strDims.X / 2, Globals.screenHeight - 400
+            Globals.spriteBatch.DrawString(font, tempStr5, new Vector2(40, 130), Color.White);//shader(effect) overrides this color.white Globals.screenWidth / 2 - strDims.X / 2, Globals.screenHeight - 400
             Globals.spriteBatch.DrawString(font, tempStr2, new Vector2(10, Globals.screenHeight - 100), Color.White);
            // Globals.spriteBatch.DrawString(font, tempStr3, new Vector2(10, Globals.screenHeight - 200), Color.White);
             /*            Globals.spriteBatch.DrawString(font, tempStr4, new Vector2(10, Globals.screenHeight - 300), Color.White);*/

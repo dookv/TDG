@@ -53,7 +53,7 @@ namespace TDG
             hsp = 0;
             vsp = 0;
             zsp = 0;
-            jumpSpeed = 14;
+            jumpSpeed = 13;
             gravSpeed = 1;
             characterVelocity = Vector2.Zero;
             name = "Bones";
@@ -128,11 +128,11 @@ namespace TDG
                     ResetZAxis();
                 }
             }
-            if (isJumping == true)
+            if (isJumping)
             {
                 zsp += gravSpeed;
                 pos = new Vector2(pos.X, pos.Y + z);
-                if (zsp == 14)
+                if (zsp == jumpSpeed)
                 {
                     isJumping = false;
                     ResetZAxis();
