@@ -34,6 +34,7 @@ namespace TDG
         public float jumpForce = -5f;  // Negative value for upward force
         public float maxJumpHeight = 200f;
         public bool isJumping = false;
+        public bool jumpCooldown = false;
         public float jumpStartY;
 
         //the vars for the working z axis jump - hsp & vsp
@@ -114,9 +115,10 @@ namespace TDG
                 pos = new Vector2(pos.X, pos.Y + speed);
                 checkScroll = true;
             }
-            if (Globals.keyboard.GetSinglePress("Space") && !isJumping)
+            if (Globals.keyboard.GetSinglePress("Space") && !jumpCooldown)
             {
                 zsp = -jumpSpeed;
+                jumpCooldown = true;
             }
             if (zsp < 0)
             {
@@ -134,6 +136,7 @@ namespace TDG
                 pos = new Vector2(pos.X, pos.Y + z);
                 if (zsp == jumpSpeed)
                 {
+                    jumpCooldown = false;
                     isJumping = false;
                     ResetZAxis();
                 }
