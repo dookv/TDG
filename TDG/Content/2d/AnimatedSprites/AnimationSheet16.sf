@@ -1,0 +1,49 @@
+{
+  "textureAtlas": {
+    "texture": "AnimationSheet16.png",
+    "regionWidth": 16,
+    "regionHeight": 32
+  },
+  "cycles": {
+    "runSouth": {
+      "frames": [0,1,2,3,4,5,6,7],
+      "isLooping": false,
+      "frameDuration": 0.09999997
+    },
+    "idleSouth": {
+      "frames": [8],
+      "isLooping": false,
+      "frameDuration": 0.01
+    },
+    "runEast": {
+      "frames": [9,10,11,12,13,14,15,16],
+      "isLooping": false,
+      "frameDuration": 0.09999997
+    },
+    "idleEast": {
+      "frames": [16],
+      "isLooping": false,
+      "frameDuration": 0.01
+    },
+    "runWest": {
+      "frames": [18,19,20,21,22,23,24,25],
+      "isLooping": false,
+      "frameDuration": 0.09999997
+    },
+    "idleWest": {
+      "frames": [25],
+      "isLooping": false,
+      "frameDuration": 0.01
+    },
+    "runNorth": {
+      "frames": [27,28,29,30,31,32,33,34],
+      "isLooping": false,
+      "frameDuration": 0.09999997
+    },
+    "idleNorth": {
+      "frames": [35],
+      "isLooping": false,
+      "frameDuration": 0.01
+    }
+  }
+}

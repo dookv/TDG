@@ -47,7 +47,7 @@ namespace TDG
                 spawnPoints[i].Update(OFFSET, ENEMY, GRID, LEVELDRAWMANAGER);
                 if (spawnPoints[i].dead)
                 {
-                    //LEVELDRAWMANAGER.Remove(spawnPoints[i]);
+                    LEVELDRAWMANAGER.Remove(spawnPoints[i]);
                     spawnPoints.RemoveAt(i);
                     i--;
                 }
@@ -59,7 +59,7 @@ namespace TDG
                 units[i].Update(OFFSET, ENEMY, GRID, LEVELDRAWMANAGER);
                 if (units[i].dead)
                 {
-                    //LEVELDRAWMANAGER.Remove(units[i]);
+                    LEVELDRAWMANAGER.Remove(units[i]);
                     ChangeScore(1);
                     units.RemoveAt(i);
                     i--;
@@ -71,7 +71,7 @@ namespace TDG
                 buildings[i].Update(OFFSET, ENEMY, GRID, LEVELDRAWMANAGER);
                 if (buildings[i].dead)
                 {
-                    //LEVELDRAWMANAGER.Remove(buildings[i]);
+                    LEVELDRAWMANAGER.Remove(buildings[i]);
                     buildings.RemoveAt(i);
                     i--;
                 }
@@ -162,7 +162,7 @@ namespace TDG
 
             if (DATA.Element("Hero") != null)//create Globals xmlLoad helper class
             {
-                hero = new Hero("2d\\AnimatedSprites\\TDGAnimation", new Vector2(Convert.ToInt32(DATA.Element("Hero").Element("Pos").Element("x").Value, Globals.culture), Convert.ToInt32(DATA.Element("Hero").Element("Pos").Element("y").Value, Globals.culture)), new Vector2(100, 100), new Vector2(4, 1), id);
+                hero = new Hero("2d\\AnimatedSprites\\TDGAnimation", new Vector2(Convert.ToInt32(DATA.Element("Hero").Element("Pos").Element("x").Value, Globals.culture), Convert.ToInt32(DATA.Element("Hero").Element("Pos").Element("y").Value, Globals.culture)), new Vector2(100, 100), new Vector2(4, 2), id);
             }
         }
 

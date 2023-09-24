@@ -28,6 +28,7 @@ namespace TDG
         public float zSpeed = 2;
         public float zGrav = 0;
         bool zJump = false;
+        public string idleAnimation = "Stand";
 
 
         public Vector2 characterVelocity;
@@ -65,6 +66,7 @@ namespace TDG
             currentAnimation = 0;
             frameAnimationList.Add(new FrameAnimation(new Vector2(frameSize.X, frameSize.Y), frames, new Vector2(0, 0), 4, 133, 0, "Walk"));//66 ms is 15 frames per second
             frameAnimationList.Add(new FrameAnimation(new Vector2(frameSize.X, frameSize.Y), frames, new Vector2(0, 0), 1, 133, 0, "Stand"));//66 ms is 15 frames per second
+            frameAnimationList.Add(new FrameAnimation(new Vector2(frameSize.X, frameSize.Y), frames, new Vector2(0, 1), 4, 133, 0, 3, ResetZAxis, "alternate"));//66 ms is 15 frames per second
             skills.Add(new FlameWave(this));
             skills.Add(new Blink(this));
             skillBar = new SkillBar(new Vector2(30, Globals.screenHeight - 140), 52.0f, 10);
@@ -92,29 +94,38 @@ namespace TDG
         public override void Update(Vector2 OFFSET, Player ENEMY, SquareGrid GRID, LevelDrawManager LEVELDRAWMANAGER)
         {
             bool checkScroll = false;
+            var animation = idleAnimation;
+            var keyboardState = Keyboard.GetState();
             //TODO add logic so the chaarcter wont stand still if A and D are pressed simultaneously
+            if (Globals.keyboard.GetPress(GameGlobals.keyBinds.GetKeyByName("Move Up")))
+            {
+                pos = new Vector2(pos.X, pos.Y - speed); //y in actually inverted, so y down is + and y up is -. in this case moving the character up == y - 1px
+                animation = "alternate";
+                checkScroll = true;
+
+            }
+            if (Globals.keyboard.GetPress(GameGlobals.keyBinds.GetKeyByName("Move Down")))
+            {
+                pos = new Vector2(pos.X, pos.Y + speed);
+                animation = "alternate";
+                checkScroll = true;
+            }
             if (Globals.keyboard.GetPress(GameGlobals.keyBinds.GetKeyByName("Move Left")))
             {
                 pos = new Vector2(pos.X - speed, pos.Y);
 
-
+                animation = "Walk";
                 checkScroll = true;
             }
             if (Globals.keyboard.GetPress(GameGlobals.keyBinds.GetKeyByName("Move Right")))
             {
                 pos = new Vector2(pos.X + speed, pos.Y);
+                animation = "Walk";
                 checkScroll = true;
             }
-            if (Globals.keyboard.GetPress(GameGlobals.keyBinds.GetKeyByName("Move Up")))
-            {
-                pos = new Vector2(pos.X, pos.Y - speed); //y in actually inverted, so y down is + and y up is -. in this case moving the character up == y - 1px
-                checkScroll = true;
-            }
-            if (Globals.keyboard.GetPress(GameGlobals.keyBinds.GetKeyByName("Move Down")))
-            {
-                pos = new Vector2(pos.X, pos.Y + speed);
-                checkScroll = true;
-            }
+
+
+            //sine wave z-axis??? cool movement
             if (Globals.keyboard.GetSinglePress("Space") && !jumpCooldown)
             {
                 zsp = -jumpSpeed;
@@ -127,7 +138,7 @@ namespace TDG
                 if (zsp >= 0)
                 {
                     isJumping = true;
-                    ResetZAxis();
+                    //ResetZAxis();
                 }
             }
             if (isJumping)
@@ -138,17 +149,17 @@ namespace TDG
                 {
                     jumpCooldown = false;
                     isJumping = false;
-                    ResetZAxis();
+                    //ResetZAxis();
                 }
             }
             z = zsp;
 
-/*
-            if (z + zsp > floorZ)
-            {
-                zsp = 0;
-                z = floorZ;
-            }*/
+            /*
+                        if (z + zsp > floorZ)
+                        {
+                            zsp = 0;
+                            z = floorZ;
+                        }*/
 
             #region
             /*            if (Globals.keyboard.GetSinglePress("Space") && !isJumping)
@@ -306,7 +317,7 @@ namespace TDG
             {
 
                 /* GameGlobals.CheckScroll(pos);//check if the screen needs to scroll on every movement press*/
-                SetAnimationByName("Walk");
+                SetAnimationByName(animation);
             }
             else
             {
@@ -318,9 +329,10 @@ namespace TDG
             base.Update(OFFSET, ENEMY, GRID, LEVELDRAWMANAGER);
         }
 
-        public virtual void ResetZAxis()
+        public virtual void ResetZAxis(Object INFO)
         {
             zsp = 0;
+            pos = new Vector2(pos.X + 100, pos.Y);
             z = 0;
         }
 
@@ -338,7 +350,7 @@ namespace TDG
 
         public override void Draw(Vector2 OFFSET)//overrides the basic2d draw function, so we have to put the offset as an input parameter
         {
-            
+
             base.Draw(OFFSET);
             skillBar.Draw(Vector2.Zero);
         }

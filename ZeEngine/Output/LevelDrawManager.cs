@@ -20,7 +20,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace ZeEngine
 {
-    public class LevelDrawManager
+    public class LevelDrawManager//Use this for enemies drawing and all moving objects that you can pass trough, for everrything else use the layes in tiled etc
     {
         public bool sortRunning;
         public int nextId;

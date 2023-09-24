@@ -55,6 +55,7 @@ namespace ZeEngine
 
         public virtual void Update(Vector2 OFFSET, LevelDrawManager LEVELDRAWMANAGER)
         {
+            base.Update(OFFSET);
             if (LEVELDRAWMANAGER != null)
             {
                 UpdateDraw(OFFSET, LEVELDRAWMANAGER);

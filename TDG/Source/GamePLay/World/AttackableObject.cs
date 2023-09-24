@@ -17,7 +17,7 @@ using ZeEngine;
 
 namespace TDG
 {
-    public class AttackableOBject : Animated2d//now all attackable objects are scene items this creates a bug where the character animation is not playing and everything is drawn doubble,
+    public class AttackableOBject : SceneItem//now all attackable objects are scene items this creates a bug where the character animation is not playing and everything is drawn doubble,
                                               //to prevent this inherrit Animated2d instead of SceneItem,remove levelDrawmanager from the base update
                                               //and in Player remove all LEVELDRAWMANAGER.Remove(spawnPoints[i]); from all the different update loops,
     {
@@ -27,7 +27,7 @@ namespace TDG
         public McTimer throbTimer = new McTimer(1000);
 
         public AttackableOBject(string PATH, Vector2 POS, Vector2 DIMS, Vector2 FRAMES, int OWNERID) 
-            : base(PATH, POS, DIMS, FRAMES, Color.White)//give frames in hero
+            : base(PATH, POS, DIMS, FRAMES, new Vector2(1, 1))//give frames in hero
         {
 
             speed = 40.0f;//default speed for a thing that inherrits this unit class, if not overridden by the derrived class
@@ -59,7 +59,7 @@ namespace TDG
                 }
             }
 
-            base.Update(OFFSET);//, LEVELDRAWMANAGER
+            base.Update(OFFSET, LEVELDRAWMANAGER);//, LEVELDRAWMANAGER
         }
 
         public virtual void GetHit(AttackableOBject ATTACKER,float DAMAGE)
